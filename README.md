@@ -36,7 +36,7 @@ Supports **dropdown menus, smooth animations, mobile toggle (hamburger menu)**, 
 ├── script.js        # JavaScript logic for navbar
 └── images/          # Image assets (icons, demo.gif, etc.)
 
-````
+```
 
 ---
 
@@ -46,7 +46,6 @@ Supports **dropdown menus, smooth animations, mobile toggle (hamburger menu)**, 
 
    ```
    git clone https://github.com/ryanaxondev/modern-responsive-navbar.git
-````
 
 2. **Navigate to the project folder**
 
