@@ -1,0 +1,232 @@
+/* ===== Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+/* ===== Global ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background: #000 url("images/bg.webp") center/cover no-repeat;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+/* Logo */
+.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Nav links */
+.links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Nav links and dropdown menu links */
+.links a,
+.dropdown-menu a {
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Underline animation */
+.links a::after,
+.dropdown-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background-color: #00aced;
+    transition: width 0.3s ease;
+    will-change: width;
+}
+
+.links a:hover::after,
+.dropdown-menu a:hover::after {
+    width: 100%;
+}
+
+/* Hover state */
+.links a:hover,
+.dropdown-menu a:hover {
+    color: #00aced;
+    transform: scale(1.05);
+}
+
+/* Active state */
+.links a.active,
+.dropdown-menu a.active {
+    color: #00aced;
+    font-weight: 600;
+}
+
+/* ===== Action button ===== */
+.action-btn {
+    padding: 0.6rem 1.2rem;
+    background: #00aced;
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect with pulse */
+.action-btn:hover {
+    background: #0084b4;
+    animation: pulse 0.6s ease forwards;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===== Toggle button ===== */
+.toggle-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: #fff;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* ===== Dropdown menu (mobile) ===== */
+.dropdown-menu {
+    position: fixed;
+    top: 70px;
+    right: 2rem;
+    width: 220px;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 10px;
+    overflow: hidden;
+    transform-origin: top right;
+
+    /* Hidden by default */
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    pointer-events: none;
+
+    /* Smooth animation */
+    transition: max-height 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+    will-change: max-height, opacity, transform;
+}
+
+.dropdown-menu.open {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.dropdown-menu li {
+    list-style: none;
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+    display: block;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dropdown action button (last item) */
+.dropdown-menu .action-btn {
+    margin: 0.6rem 1rem 1rem;
+    text-align: center;
+    display: block;
+    border-radius: 25px;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #00aced;
+}
+
+/* ===== Sections ===== */
+section {
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+h1,
+h2 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* ===== Responsive design ===== */
+@media (max-width: 992px) {
+
+    .navbar .links,
+    .navbar .action-btn {
+        display: none;
+    }
+
+    .toggle-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .dropdown-menu {
+        left: 2rem;
+        right: 2rem;
+        width: auto;
+    }
+}
